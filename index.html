@@ -535,7 +535,7 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        /* ========== БЛОК 5: ДРЕСС-КОД (с сеткой 1.png ... 13.png, без 5) ========== */
+        /* ========== БЛОК 5: ДРЕСС-КОД ========== */
         .dresscode-section {
             background-color: #111111;
             color: var(--white);
@@ -576,9 +576,10 @@
             opacity: 0.7;
         }
 
+        /* Сетка дресс-кода: 2 ряда по 6 элементов */
         .thumb-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             gap: 12px;
             max-width: 500px;
             width: 90%;
@@ -646,7 +647,7 @@
             padding: 0 10px;
         }
 
-        /* ========== БЛОК 7: СЛАЙДЕР (фото2, фото1) ========== */
+        /* ========== БЛОК 7: СЛАЙДЕР (вертикальные фото) ========== */
         .slider-section {
             background-color: #111111;
             color: var(--white);
@@ -710,9 +711,10 @@
         .slide:first-child { margin-left: 10%; }
         .slide:last-child { margin-right: 10%; }
 
+        /* Вертикальные фото: высота больше ширины */
         .slide img {
             width: 100%;
-            height: 340px;
+            height: 500px; /* фиксированная высота для вертикальности */
             object-fit: cover;
             border: 1px solid rgba(212, 175, 55, 0.2);
             filter: sepia(15%);
@@ -816,23 +818,11 @@
             margin: 0 2px;
         }
 
-        .countdown-message {
-            margin-top: 40px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            color: var(--white);
-            letter-spacing: 3px;
-            font-weight: 300;
-            opacity: 0;
-            animation: fadeInUp 1.5s ease-out 1s forwards;
-            text-transform: uppercase;
-        }
-
-        /* ========== БЛОК 9: КОНТАКТЫ ========== */
+        /* ========== БЛОК 9: КОНТАКТЫ (с текстом в конце) ========== */
         .contacts-section {
             background-color: #111111;
             color: var(--white);
-            padding: 70px 30px;
+            padding: 70px 30px 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -906,6 +896,19 @@
             padding-top: 30px;
         }
 
+        /* Финальный текст "ждём вас" — в самом конце блока контактов */
+        .contacts-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: var(--white);
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            opacity: 0.8;
+        }
+
         /* ========== АНИМАЦИИ ========== */
         @keyframes sparkle {
             0% {
@@ -947,12 +950,15 @@
             .wishes-section { padding: 60px 25px; }
             .slider-section { padding: 60px 0; }
             .countdown-section { padding: 60px 25px; }
-            .contacts-section { padding: 60px 25px; }
+            .contacts-section { padding: 60px 25px 40px; }
             .slide { flex: 0 0 80%; }
-            .slide img { height: 300px; }
+            .slide img { height: 400px; } /* чуть меньше, но всё ещё вертикально */
             .slide:first-child { margin-left: 8%; }
             .slide:last-child { margin-right: 8%; }
-            .thumb-grid { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
+            .thumb-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -975,9 +981,9 @@
             .wishes-section { padding: 50px 20px; }
             .slider-section { padding: 50px 0; }
             .countdown-section { padding: 50px 20px; }
-            .contacts-section { padding: 50px 20px; }
+            .contacts-section { padding: 50px 20px 30px; }
             .slide { flex: 0 0 85%; }
-            .slide img { height: 240px; }
+            .slide img { height: 320px; }
             .slide:first-child { margin-left: 6%; }
             .slide:last-child { margin-right: 6%; }
             .countdown-timer { gap: 4px; }
@@ -986,7 +992,10 @@
             .countdown-separator { font-size: 1.2rem; margin: 0 1px; }
             .contacts-grid { gap: 20px; }
             .confirmation-note { font-size: 12px; }
-            .thumb-grid { grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 8px; }
+            .thumb-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -1122,7 +1131,7 @@
             </div>
         </section>
 
-        <!-- БЛОК 5: ДРЕСС-КОД (с сеткой 1.png ... 13.png, без 5) -->
+        <!-- БЛОК 5: ДРЕСС-КОД (сетка 2 ряда по 6) -->
         <section class="dresscode-section">
             <h2 class="dresscode-title">Дресс-код</h2>
             <p class="dresscode-text">
@@ -1154,7 +1163,7 @@
             </p>
         </section>
 
-        <!-- БЛОК 7: СЛАЙДЕР (фото2, фото1) -->
+        <!-- БЛОК 7: СЛАЙДЕР (фото2, фото1) — вертикальные -->
         <section class="slider-section">
             <h2 class="slider-title">Наши моменты</h2>
             <div class="slider-wrapper">
@@ -1169,7 +1178,7 @@
             </div>
         </section>
 
-        <!-- БЛОК 8: ТАЙМЕР -->
+        <!-- БЛОК 8: ТАЙМЕР (без текста "ждём вас") -->
         <section class="countdown-section">
             <h2 class="countdown-title">До свадьбы осталось</h2>
             <p class="countdown-subtitle">
@@ -1197,11 +1206,10 @@
                     <span class="countdown-label">сек</span>
                 </div>
             </div>
-
-            <p class="countdown-message">ждём вас</p>
+            <!-- Текст "ждём вас" убран отсюда -->
         </section>
 
-        <!-- БЛОК 9: КОНТАКТЫ -->
+        <!-- БЛОК 9: КОНТАКТЫ (с "ждём вас" в конце) -->
         <section class="contacts-section">
             <h2 class="contacts-title">Контакты</h2>
             <div class="contacts-grid">
@@ -1218,6 +1226,9 @@
             <p class="confirmation-note">
                 За три недели до торжества мы лично свяжемся с вами для подтверждения присутствия.
             </p>
+
+            <!-- Текст "ждём вас" теперь здесь, в самом конце блока контактов -->
+            <p class="contacts-message">ждём вас</p>
         </section>
 
     </main>
@@ -1281,10 +1292,8 @@
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Добавляем класс visible для анимации
                         entry.target.classList.add('visible');
                         
-                        // Для таймлайна дополнительно активируем каждый пункт
                         if (entry.target.classList.contains('timeline-section')) {
                             const items = entry.target.querySelectorAll('.timeline-item');
                             items.forEach((item, index) => {
@@ -1297,12 +1306,10 @@
                 });
             }, { threshold: 0.15 });
 
-            // Наблюдаем за всеми секциями
             document.querySelectorAll('.details, .timeline-section, .location-section, .dresscode-section, .wishes-section, .slider-section, .countdown-section, .contacts-section').forEach(section => {
                 sectionObserver.observe(section);
             });
 
-            // Герой появляется после открытия конверта
             const hero = document.querySelector('.hero');
             const heroObserver = new MutationObserver(() => {
                 if (mainContent.classList.contains('visible')) {
@@ -1322,7 +1329,6 @@
                     document.getElementById('hours').textContent = '00';
                     document.getElementById('minutes').textContent = '00';
                     document.getElementById('seconds').textContent = '00';
-                    document.querySelector('.countdown-message').textContent = 'сегодня';
                     return;
                 }
 
