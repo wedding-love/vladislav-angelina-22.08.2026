@@ -125,13 +125,13 @@
             opacity: 1;
         }
 
-        /* ========== БЛОК 1: ГЕРОЙ (всегда 100vh, без прокрутки) ========== */
+        /* ========== БЛОК 1: ГЕРОЙ (всегда 100vh, текст виден сразу) ========== */
         .hero {
             height: 100vh;
             min-height: 100vh;
             display: flex;
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)), 
                         url('главная.jpeg') center/cover no-repeat;
             opacity: 0;
             transform: scale(1.05);
@@ -146,27 +146,31 @@
 
         .hero-info {
             position: absolute;
-            bottom: clamp(30px, 8vh, 80px);
-            left: clamp(20px, 5vw, 60px);
+            bottom: clamp(20px, 6vh, 70px);
+            left: clamp(15px, 4vw, 50px);
             text-align: left;
             padding-right: 20px;
+            width: 90%;
+            max-width: 600px;
         }
 
         .hero-names {
-            font-size: clamp(20px, 4.5vw, 48px);
+            font-size: clamp(28px, 6vw, 60px);
             font-weight: 200;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--white);
-            line-height: 1.2;
+            line-height: 1.1;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
 
         .hero-date {
-            font-size: clamp(12px, 1.5vw, 18px);
-            letter-spacing: 6px;
+            font-size: clamp(16px, 2.2vw, 24px);
+            letter-spacing: 8px;
             font-weight: 100;
             color: var(--gold);
+            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
         }
 
         /* ========== БЛОК 2: ДЕТАЛИ ========== */
@@ -715,7 +719,6 @@
         .slide:first-child { margin-left: 10%; }
         .slide:last-child { margin-right: 10%; }
 
-        /* Очень вертикальные фото: соотношение ~ 2:3 */
         .slide img {
             width: 100%;
             height: 600px;
@@ -900,7 +903,6 @@
             padding-top: 30px;
         }
 
-        /* Финальный текст "ждём вас!" — в самом конце блока контактов */
         .contacts-message {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -941,7 +943,9 @@
 
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero-info { bottom: clamp(20px, 5vh, 50px); left: clamp(15px, 3vw, 30px); }
+            .hero-info { bottom: clamp(15px, 4vh, 40px); left: clamp(12px, 3vw, 25px); }
+            .hero-names { font-size: clamp(24px, 5vw, 36px); letter-spacing: 3px; }
+            .hero-date { font-size: clamp(14px, 1.8vw, 18px); letter-spacing: 5px; }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -966,9 +970,9 @@
         }
 
         @media (max-width: 480px) {
-            .hero-info { bottom: clamp(15px, 4vh, 40px); left: clamp(12px, 2vw, 20px); }
-            .hero-names { font-size: clamp(16px, 5vw, 24px); letter-spacing: 2px; }
-            .hero-date { font-size: clamp(10px, 1.8vw, 14px); letter-spacing: 3px; }
+            .hero-info { bottom: clamp(12px, 3vh, 30px); left: clamp(10px, 2vw, 16px); }
+            .hero-names { font-size: clamp(20px, 6vw, 28px); letter-spacing: 2px; }
+            .hero-date { font-size: clamp(12px, 2.5vw, 16px); letter-spacing: 3px; }
             .details { padding: 50px 18px; }
             .invitation-greeting-text { font-size: 1.6rem; }
             .invitation-text { font-size: 13px; line-height: 1.9; }
@@ -1022,7 +1026,7 @@
     <!-- ========== ОСНОВНОЙ КОНТЕНТ ========== -->
     <main id="main-content">
 
-        <!-- БЛОК 1: ГЕРОЙ (всегда 100vh) -->
+        <!-- БЛОК 1: ГЕРОЙ (текст виден сразу) -->
         <section class="hero">
             <div class="hero-info">
                 <h1 class="hero-names">Vladislav & Angelina</h1>
@@ -1168,7 +1172,7 @@
             </p>
         </section>
 
-        <!-- БЛОК 7: СЛАЙДЕР (очень вертикальные фото) -->
+        <!-- БЛОК 7: СЛАЙДЕР -->
         <section class="slider-section">
             <h2 class="slider-title">Наши моменты</h2>
             <div class="slider-wrapper">
@@ -1213,7 +1217,7 @@
             </div>
         </section>
 
-        <!-- БЛОК 9: КОНТАКТЫ (с "ждём вас!" в конце) -->
+        <!-- БЛОК 9: КОНТАКТЫ -->
         <section class="contacts-section">
             <h2 class="contacts-title">Контакты</h2>
             <div class="contacts-grid">
@@ -1231,7 +1235,6 @@
                 За три недели до торжества мы лично свяжемся с вами для подтверждения присутствия.
             </p>
 
-            <!-- Текст "ждём вас!" с восклицательным знаком в самом конце -->
             <p class="contacts-message">ждём вас!</p>
         </section>
 
