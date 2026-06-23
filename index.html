@@ -24,6 +24,7 @@
             font-family: 'Montserrat', sans-serif;
             background: var(--black);
             overflow-x: hidden;
+            overflow-y: auto;
             font-weight: 200;
             line-height: 1.8;
             color: var(--white);
@@ -124,9 +125,10 @@
             opacity: 1;
         }
 
-        /* ========== БЛОК 1: ГЕРОЙ ========== */
+        /* ========== БЛОК 1: ГЕРОЙ (всегда 100vh, без прокрутки) ========== */
         .hero {
             height: 100vh;
+            min-height: 100vh;
             display: flex;
             position: relative;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
@@ -134,6 +136,7 @@
             opacity: 0;
             transform: scale(1.05);
             transition: opacity 2s ease-out 2s, transform 2.5s ease-out 2s;
+            overflow: hidden;
         }
 
         .hero.visible {
@@ -143,22 +146,24 @@
 
         .hero-info {
             position: absolute;
-            bottom: 60px;
-            left: 40px;
+            bottom: clamp(30px, 8vh, 80px);
+            left: clamp(20px, 5vw, 60px);
             text-align: left;
+            padding-right: 20px;
         }
 
         .hero-names {
-            font-size: clamp(24px, 5vw, 48px);
+            font-size: clamp(20px, 4.5vw, 48px);
             font-weight: 200;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--white);
+            line-height: 1.2;
         }
 
         .hero-date {
-            font-size: 16px;
+            font-size: clamp(12px, 1.5vw, 18px);
             letter-spacing: 6px;
             font-weight: 100;
             color: var(--gold);
@@ -289,7 +294,7 @@
             z-index: 1;
         }
 
-        /* ========== БЛОК 3: ТАЙМИНГ (только 3 пункта) ========== */
+        /* ========== БЛОК 3: ТАЙМИНГ ========== */
         .timeline-section {
             background-color: #111111;
             color: var(--white);
@@ -576,7 +581,6 @@
             opacity: 0.7;
         }
 
-        /* Сетка дресс-кода: 2 ряда по 6 элементов */
         .thumb-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -647,7 +651,7 @@
             padding: 0 10px;
         }
 
-        /* ========== БЛОК 7: СЛАЙДЕР (вертикальные фото) ========== */
+        /* ========== БЛОК 7: СЛАЙДЕР (очень вертикальные фото) ========== */
         .slider-section {
             background-color: #111111;
             color: var(--white);
@@ -711,10 +715,10 @@
         .slide:first-child { margin-left: 10%; }
         .slide:last-child { margin-right: 10%; }
 
-        /* Вертикальные фото: высота больше ширины */
+        /* Очень вертикальные фото: соотношение ~ 2:3 */
         .slide img {
             width: 100%;
-            height: 500px; /* фиксированная высота для вертикальности */
+            height: 600px;
             object-fit: cover;
             border: 1px solid rgba(212, 175, 55, 0.2);
             filter: sepia(15%);
@@ -818,7 +822,7 @@
             margin: 0 2px;
         }
 
-        /* ========== БЛОК 9: КОНТАКТЫ (с текстом в конце) ========== */
+        /* ========== БЛОК 9: КОНТАКТЫ ========== */
         .contacts-section {
             background-color: #111111;
             color: var(--white);
@@ -896,7 +900,7 @@
             padding-top: 30px;
         }
 
-        /* Финальный текст "ждём вас" — в самом конце блока контактов */
+        /* Финальный текст "ждём вас!" — в самом конце блока контактов */
         .contacts-message {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -937,7 +941,7 @@
 
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero-info { bottom: 50px; left: 30px; }
+            .hero-info { bottom: clamp(20px, 5vh, 50px); left: clamp(15px, 3vw, 30px); }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -952,7 +956,7 @@
             .countdown-section { padding: 60px 25px; }
             .contacts-section { padding: 60px 25px 40px; }
             .slide { flex: 0 0 80%; }
-            .slide img { height: 400px; } /* чуть меньше, но всё ещё вертикально */
+            .slide img { height: 480px; }
             .slide:first-child { margin-left: 8%; }
             .slide:last-child { margin-right: 8%; }
             .thumb-grid {
@@ -962,8 +966,9 @@
         }
 
         @media (max-width: 480px) {
-            .hero-info { bottom: 40px; left: 20px; }
-            .hero-names { font-size: 20px; letter-spacing: 2px; }
+            .hero-info { bottom: clamp(15px, 4vh, 40px); left: clamp(12px, 2vw, 20px); }
+            .hero-names { font-size: clamp(16px, 5vw, 24px); letter-spacing: 2px; }
+            .hero-date { font-size: clamp(10px, 1.8vw, 14px); letter-spacing: 3px; }
             .details { padding: 50px 18px; }
             .invitation-greeting-text { font-size: 1.6rem; }
             .invitation-text { font-size: 13px; line-height: 1.9; }
@@ -983,7 +988,7 @@
             .countdown-section { padding: 50px 20px; }
             .contacts-section { padding: 50px 20px 30px; }
             .slide { flex: 0 0 85%; }
-            .slide img { height: 320px; }
+            .slide img { height: 400px; }
             .slide:first-child { margin-left: 6%; }
             .slide:last-child { margin-right: 6%; }
             .countdown-timer { gap: 4px; }
@@ -1017,7 +1022,7 @@
     <!-- ========== ОСНОВНОЙ КОНТЕНТ ========== -->
     <main id="main-content">
 
-        <!-- БЛОК 1: ГЕРОЙ -->
+        <!-- БЛОК 1: ГЕРОЙ (всегда 100vh) -->
         <section class="hero">
             <div class="hero-info">
                 <h1 class="hero-names">Vladislav & Angelina</h1>
@@ -1065,7 +1070,7 @@
             </div>
         </section>
 
-        <!-- БЛОК 3: ТАЙМИНГ (только 3 пункта) -->
+        <!-- БЛОК 3: ТАЙМИНГ -->
         <section class="timeline-section">
             <h2 class="timeline-title">Программа дня</h2>
             
@@ -1131,7 +1136,7 @@
             </div>
         </section>
 
-        <!-- БЛОК 5: ДРЕСС-КОД (сетка 2 ряда по 6) -->
+        <!-- БЛОК 5: ДРЕСС-КОД -->
         <section class="dresscode-section">
             <h2 class="dresscode-title">Дресс-код</h2>
             <p class="dresscode-text">
@@ -1163,7 +1168,7 @@
             </p>
         </section>
 
-        <!-- БЛОК 7: СЛАЙДЕР (фото2, фото1) — вертикальные -->
+        <!-- БЛОК 7: СЛАЙДЕР (очень вертикальные фото) -->
         <section class="slider-section">
             <h2 class="slider-title">Наши моменты</h2>
             <div class="slider-wrapper">
@@ -1178,7 +1183,7 @@
             </div>
         </section>
 
-        <!-- БЛОК 8: ТАЙМЕР (без текста "ждём вас") -->
+        <!-- БЛОК 8: ТАЙМЕР -->
         <section class="countdown-section">
             <h2 class="countdown-title">До свадьбы осталось</h2>
             <p class="countdown-subtitle">
@@ -1206,10 +1211,9 @@
                     <span class="countdown-label">сек</span>
                 </div>
             </div>
-            <!-- Текст "ждём вас" убран отсюда -->
         </section>
 
-        <!-- БЛОК 9: КОНТАКТЫ (с "ждём вас" в конце) -->
+        <!-- БЛОК 9: КОНТАКТЫ (с "ждём вас!" в конце) -->
         <section class="contacts-section">
             <h2 class="contacts-title">Контакты</h2>
             <div class="contacts-grid">
@@ -1227,8 +1231,8 @@
                 За три недели до торжества мы лично свяжемся с вами для подтверждения присутствия.
             </p>
 
-            <!-- Текст "ждём вас" теперь здесь, в самом конце блока контактов -->
-            <p class="contacts-message">ждём вас</p>
+            <!-- Текст "ждём вас!" с восклицательным знаком в самом конце -->
+            <p class="contacts-message">ждём вас!</p>
         </section>
 
     </main>
@@ -1288,7 +1292,6 @@
                 }, 4000);
             });
 
-            // Наблюдатель за появлением блоков при прокрутке
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
