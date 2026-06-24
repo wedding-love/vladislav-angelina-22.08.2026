@@ -140,7 +140,7 @@
             transform: scale(1.05);
             transition: opacity 2s ease-out 2s, transform 2.5s ease-out 2s;
             overflow: hidden;
-            padding: 0 clamp(15px, 4vw, 50px) clamp(30px, 8vh, 80px) clamp(15px, 4vw, 50px);
+            padding: 0 clamp(15px, 4vw, 50px) clamp(20px, 5vh, 60px) clamp(15px, 4vw, 50px);
         }
 
         .hero.visible {
@@ -155,25 +155,24 @@
             padding-bottom: clamp(5px, 1vh, 15px);
         }
 
+        /* ===== ВЕРНУЛИ КРУПНЫЙ РАЗМЕР ===== */
         .hero-names {
-            font-size: clamp(20px, 3.2vw, 38px);
+            font-size: clamp(28px, 6vw, 70px);
             font-weight: 200;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 4px;
             color: var(--white);
             line-height: 1.1;
             text-shadow: 0 2px 30px rgba(0,0,0,0.6);
-            max-width: 70%;
         }
 
         .hero-date {
-            font-size: clamp(14px, 1.6vw, 20px);
-            letter-spacing: 6px;
+            font-size: clamp(16px, 2.2vw, 28px);
+            letter-spacing: 8px;
             font-weight: 100;
             color: var(--gold);
             text-shadow: 0 2px 20px rgba(0,0,0,0.7);
-            max-width: 70%;
         }
 
         /* ========== БЛОК 2: ДЕТАЛИ ========== */
@@ -933,22 +932,11 @@
             }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(20px, 5vh, 50px) clamp(12px, 3vw, 25px); }
-            .hero-names { font-size: clamp(18px, 3.5vw, 30px); letter-spacing: 3px; max-width: 80%; }
-            .hero-date { font-size: clamp(13px, 1.8vw, 18px); letter-spacing: 4px; max-width: 80%; }
+            .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(15px, 4vh, 40px) clamp(12px, 3vw, 25px); }
+            .hero-names { font-size: clamp(22px, 5vw, 42px); letter-spacing: 3px; }
+            .hero-date { font-size: clamp(14px, 2vw, 20px); letter-spacing: 5px; }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -973,9 +961,19 @@
         }
 
         @media (max-width: 480px) {
-            .hero { padding: 0 clamp(10px, 2vw, 16px) clamp(20px, 6vh, 50px) clamp(10px, 2vw, 16px); align-items: flex-end; }
-            .hero-names { font-size: clamp(16px, 4.5vw, 22px); letter-spacing: 2px; max-width: 90%; }
-            .hero-date { font-size: clamp(12px, 2.5vw, 15px); letter-spacing: 3px; max-width: 90%; }
+            .hero { 
+                padding: 0 clamp(10px, 2vw, 16px) clamp(12px, 3vh, 30px) clamp(10px, 2vw, 16px); 
+                align-items: flex-end; 
+            }
+            .hero-names { 
+                font-size: clamp(18px, 5vw, 28px); 
+                letter-spacing: 2px; 
+                margin-bottom: 2px;
+            }
+            .hero-date { 
+                font-size: clamp(12px, 2.5vw, 16px); 
+                letter-spacing: 4px; 
+            }
             .details { padding: 50px 18px; }
             .invitation-greeting-text { font-size: 1.6rem; }
             .invitation-text { font-size: 13px; line-height: 1.9; }
@@ -1175,7 +1173,7 @@
             </p>
         </section>
 
-        <!-- БЛОК 7: ТАЙМЕР (ПЕРЕМЕЩЁН СЮДА) -->
+        <!-- БЛОК 7: ТАЙМЕР -->
         <section class="countdown-section">
             <h2 class="countdown-title">До свадьбы осталось</h2>
             <p class="countdown-subtitle">
