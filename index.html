@@ -125,22 +125,28 @@
             opacity: 1;
         }
 
-        /* ========== БЛОК 1: ГЕРОЙ ========== */
+        /* ========== БЛОК 1: ГЕРОЙ - ТОЧНО НА ВЕСЬ ЭКРАН ========== */
         .hero {
             height: 100vh;
+            height: 100dvh;
             min-height: 100vh;
+            min-height: 100dvh;
             max-height: 100vh;
+            max-height: 100dvh;
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
             position: relative;
             background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
                         url('главная.jpeg') center/cover no-repeat;
+            background-size: cover;
+            background-position: center;
             opacity: 0;
             transform: scale(1.05);
             transition: opacity 2s ease-out 2s, transform 2.5s ease-out 2s;
             overflow: hidden;
-            padding: 0 clamp(15px, 4vw, 50px) clamp(20px, 5vh, 60px) clamp(15px, 4vw, 50px);
+            padding: 0 20px 15px 20px;
+            flex-shrink: 0;
         }
 
         .hero.visible {
@@ -154,22 +160,24 @@
             max-width: 600px;
             padding-bottom: 0;
             margin-bottom: 0;
+            flex-shrink: 0;
         }
 
         .hero-names {
-            font-size: clamp(28px, 6vw, 70px);
+            font-size: clamp(20px, 5vw, 70px);
             font-weight: 200;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 2px;
             color: var(--white);
             line-height: 1.05;
             text-shadow: 0 2px 30px rgba(0,0,0,0.6);
+            word-break: break-word;
         }
 
         .hero-date {
-            font-size: clamp(16px, 2.2vw, 28px);
-            letter-spacing: 8px;
+            font-size: clamp(12px, 2vw, 28px);
+            letter-spacing: 6px;
             font-weight: 100;
             color: var(--gold);
             text-shadow: 0 2px 20px rgba(0,0,0,0.7);
@@ -827,9 +835,9 @@
 
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(12px, 3vh, 30px) clamp(12px, 3vw, 25px); }
-            .hero-names { font-size: clamp(20px, 4.5vw, 34px); letter-spacing: 2px; }
-            .hero-date { font-size: clamp(13px, 2vw, 17px); letter-spacing: 4px; }
+            .hero { padding: 0 15px 12px 15px; }
+            .hero-names { font-size: clamp(22px, 4.5vw, 34px); letter-spacing: 2px; }
+            .hero-date { font-size: clamp(14px, 2vw, 18px); letter-spacing: 4px; }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -852,17 +860,17 @@
 
         @media (max-width: 480px) {
             .hero { 
-                padding: 0 clamp(10px, 2vw, 16px) clamp(10px, 2.5vh, 20px) clamp(10px, 2vw, 16px); 
+                padding: 0 12px 10px 12px; 
                 align-items: flex-end; 
             }
             .hero-names { 
-                font-size: clamp(16px, 4.5vw, 22px); 
+                font-size: clamp(18px, 4.5vw, 24px); 
                 letter-spacing: 1.5px; 
                 margin-bottom: 1px;
                 line-height: 1.0;
             }
             .hero-date { 
-                font-size: clamp(11px, 2.5vw, 14px); 
+                font-size: clamp(12px, 2.5vw, 15px); 
                 letter-spacing: 3px; 
             }
             .hero-info {
@@ -920,25 +928,43 @@
         }
 
         @media (max-width: 390px) {
+            .hero { padding: 0 8px 8px 8px; }
             .hero-names { 
-                font-size: clamp(14px, 4vw, 18px); 
+                font-size: clamp(15px, 4vw, 18px); 
                 letter-spacing: 1px; 
             }
             .hero-date { 
                 font-size: clamp(10px, 2vw, 12px); 
                 letter-spacing: 2px; 
             }
-            .hero { 
-                padding: 0 10px clamp(8px, 2vh, 14px) 10px; 
-            }
+        }
+
+        @media (max-height: 700px) {
+            .hero { padding: 0 12px 8px 12px; }
+            .hero-names { font-size: clamp(16px, 3.5vw, 22px); letter-spacing: 1.5px; }
+            .hero-date { font-size: clamp(11px, 1.8vw, 14px); letter-spacing: 3px; }
+        }
+
+        @media (max-height: 600px) {
+            .hero { padding: 0 10px 6px 10px; }
+            .hero-names { font-size: clamp(14px, 3vw, 18px); letter-spacing: 1px; }
+            .hero-date { font-size: clamp(10px, 1.5vw, 12px); letter-spacing: 2px; }
         }
 
         /* Специально для iPhone с вырезом */
         @supports (padding: max(0px)) {
             .hero {
-                padding-left: max(clamp(10px, 2vw, 16px), env(safe-area-inset-left));
-                padding-right: max(clamp(10px, 2vw, 16px), env(safe-area-inset-right));
-                padding-bottom: max(clamp(10px, 2.5vh, 20px), env(safe-area-inset-bottom));
+                padding-left: max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+                padding-bottom: max(10px, env(safe-area-inset-bottom));
+            }
+        }
+
+        @supports (height: 100dvh) {
+            .hero {
+                height: 100dvh;
+                min-height: 100dvh;
+                max-height: 100dvh;
             }
         }
     </style>
@@ -1240,6 +1266,24 @@
                 }
             });
             heroObserver.observe(mainContent, { attributes: true, attributeFilter: ['class'] });
+
+            // Функция для принудительного обновления высоты hero
+            function setHeroHeight() {
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    const vh = window.innerHeight;
+                    hero.style.height = vh + 'px';
+                    hero.style.minHeight = vh + 'px';
+                    hero.style.maxHeight = vh + 'px';
+                }
+            }
+
+            // Вызываем при загрузке и при изменении размера
+            setHeroHeight();
+            window.addEventListener('resize', setHeroHeight);
+            window.addEventListener('orientationchange', function() {
+                setTimeout(setHeroHeight, 300);
+            });
 
             function updateCountdown() {
                 const weddingDate = new Date('2026-08-22T16:00:00');
