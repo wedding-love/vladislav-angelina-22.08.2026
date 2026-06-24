@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Приглашение: Владислав и Ангелина</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -130,6 +129,7 @@
         .hero {
             height: 100vh;
             min-height: 100vh;
+            max-height: 100vh;
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
@@ -152,18 +152,18 @@
             text-align: left;
             width: 100%;
             max-width: 600px;
-            padding-bottom: clamp(5px, 1vh, 15px);
+            padding-bottom: 0;
+            margin-bottom: 0;
         }
 
-        /* ===== ВЕРНУЛИ КРУПНЫЙ РАЗМЕР ===== */
         .hero-names {
             font-size: clamp(28px, 6vw, 70px);
             font-weight: 200;
             letter-spacing: 5px;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             color: var(--white);
-            line-height: 1.1;
+            line-height: 1.05;
             text-shadow: 0 2px 30px rgba(0,0,0,0.6);
         }
 
@@ -935,8 +935,8 @@
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
             .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(15px, 4vh, 40px) clamp(12px, 3vw, 25px); }
-            .hero-names { font-size: clamp(22px, 5vw, 42px); letter-spacing: 3px; }
-            .hero-date { font-size: clamp(14px, 2vw, 20px); letter-spacing: 5px; }
+            .hero-names { font-size: clamp(24px, 5.5vw, 42px); letter-spacing: 3px; }
+            .hero-date { font-size: clamp(15px, 2.2vw, 20px); letter-spacing: 5px; }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -962,16 +962,16 @@
 
         @media (max-width: 480px) {
             .hero { 
-                padding: 0 clamp(10px, 2vw, 16px) clamp(12px, 3vh, 30px) clamp(10px, 2vw, 16px); 
+                padding: 0 clamp(12px, 3vw, 20px) clamp(15px, 4vh, 35px) clamp(12px, 3vw, 20px); 
                 align-items: flex-end; 
             }
             .hero-names { 
-                font-size: clamp(18px, 5vw, 28px); 
+                font-size: clamp(20px, 5.5vw, 30px); 
                 letter-spacing: 2px; 
                 margin-bottom: 2px;
             }
             .hero-date { 
-                font-size: clamp(12px, 2.5vw, 16px); 
+                font-size: clamp(13px, 2.8vw, 18px); 
                 letter-spacing: 4px; 
             }
             .details { padding: 50px 18px; }
@@ -993,7 +993,7 @@
             .slider-section { padding: 50px 0; }
             .contacts-section { padding: 50px 20px 30px; }
             .slide { flex: 0 0 85%; }
-            .slide img { height: 400px; }
+            .slide img { height: 350px; }
             .slide:first-child { margin-left: 6%; }
             .slide:last-child { margin-right: 6%; }
             .countdown-timer { gap: 4px; }
@@ -1005,6 +1005,15 @@
             .thumb-grid {
                 grid-template-columns: repeat(6, 1fr);
                 gap: 8px;
+            }
+        }
+
+        /* Специально для iPhone с вырезом */
+        @supports (padding: max(0px)) {
+            .hero {
+                padding-left: max(clamp(15px, 4vw, 50px), env(safe-area-inset-left));
+                padding-right: max(clamp(15px, 4vw, 50px), env(safe-area-inset-right));
+                padding-bottom: max(clamp(20px, 5vh, 60px), env(safe-area-inset-bottom));
             }
         }
     </style>
