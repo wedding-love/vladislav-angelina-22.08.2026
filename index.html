@@ -125,18 +125,21 @@
             opacity: 1;
         }
 
-        /* ========== БЛОК 1: ГЕРОЙ (всегда 100vh, текст виден сразу) ========== */
+        /* ========== БЛОК 1: ГЕРОЙ ========== */
         .hero {
             height: 100vh;
             min-height: 100vh;
             display: flex;
+            align-items: center;
+            justify-content: flex-start;
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)), 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
                         url('главная.jpeg') center/cover no-repeat;
             opacity: 0;
             transform: scale(1.05);
             transition: opacity 2s ease-out 2s, transform 2.5s ease-out 2s;
             overflow: hidden;
+            padding: 0 clamp(15px, 4vw, 50px);
         }
 
         .hero.visible {
@@ -145,32 +148,30 @@
         }
 
         .hero-info {
-            position: absolute;
-            bottom: clamp(20px, 6vh, 70px);
-            left: clamp(15px, 4vw, 50px);
             text-align: left;
-            padding-right: 20px;
-            width: 90%;
+            width: 100%;
             max-width: 600px;
+            padding-bottom: clamp(10px, 2vh, 30px);
+            margin-bottom: clamp(10px, 3vh, 40px);
         }
 
         .hero-names {
-            font-size: clamp(28px, 6vw, 60px);
+            font-size: clamp(32px, 7vw, 70px);
             font-weight: 200;
             letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 6px;
             color: var(--white);
             line-height: 1.1;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 30px rgba(0,0,0,0.6);
         }
 
         .hero-date {
-            font-size: clamp(16px, 2.2vw, 24px);
+            font-size: clamp(18px, 2.5vw, 28px);
             letter-spacing: 8px;
             font-weight: 100;
             color: var(--gold);
-            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.7);
         }
 
         /* ========== БЛОК 2: ДЕТАЛИ ========== */
@@ -655,7 +656,7 @@
             padding: 0 10px;
         }
 
-        /* ========== БЛОК 7: СЛАЙДЕР (очень вертикальные фото) ========== */
+        /* ========== БЛОК 7: СЛАЙДЕР ========== */
         .slider-section {
             background-color: #111111;
             color: var(--white);
@@ -943,9 +944,9 @@
 
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero-info { bottom: clamp(15px, 4vh, 40px); left: clamp(12px, 3vw, 25px); }
-            .hero-names { font-size: clamp(24px, 5vw, 36px); letter-spacing: 3px; }
-            .hero-date { font-size: clamp(14px, 1.8vw, 18px); letter-spacing: 5px; }
+            .hero { padding: 0 clamp(12px, 3vw, 25px); }
+            .hero-names { font-size: clamp(28px, 6vw, 42px); letter-spacing: 3px; }
+            .hero-date { font-size: clamp(15px, 2vw, 20px); letter-spacing: 5px; }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -970,9 +971,9 @@
         }
 
         @media (max-width: 480px) {
-            .hero-info { bottom: clamp(12px, 3vh, 30px); left: clamp(10px, 2vw, 16px); }
-            .hero-names { font-size: clamp(20px, 6vw, 28px); letter-spacing: 2px; }
-            .hero-date { font-size: clamp(12px, 2.5vw, 16px); letter-spacing: 3px; }
+            .hero { padding: 0 clamp(10px, 2vw, 16px); align-items: flex-end; padding-bottom: clamp(30px, 10vh, 80px); }
+            .hero-names { font-size: clamp(24px, 7vw, 32px); letter-spacing: 2px; }
+            .hero-date { font-size: clamp(14px, 3vw, 18px); letter-spacing: 4px; }
             .details { padding: 50px 18px; }
             .invitation-greeting-text { font-size: 1.6rem; }
             .invitation-text { font-size: 13px; line-height: 1.9; }
@@ -1026,7 +1027,7 @@
     <!-- ========== ОСНОВНОЙ КОНТЕНТ ========== -->
     <main id="main-content">
 
-        <!-- БЛОК 1: ГЕРОЙ (текст виден сразу) -->
+        <!-- БЛОК 1: ГЕРОЙ (информация видна сразу в конце экрана) -->
         <section class="hero">
             <div class="hero-info">
                 <h1 class="hero-names">Vladislav & Angelina</h1>
