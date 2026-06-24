@@ -967,9 +967,27 @@
                 max-height: 100dvh;
             }
         }
+
+        /* Скрытый аудио-плеер */
+        #bg-music {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
+
+    <!-- ========== АУДИО ========== -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="Lana Del Rey - Young And Beautiful (OST Великий Гетсби).mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
 
     <!-- ========== КОНВЕРТ ========== -->
     <div id="envelope-overlay" class="envelope-overlay">
@@ -1189,6 +1207,8 @@
             const mainContent = document.getElementById('main-content');
             const blackScreen = document.getElementById('black-screen');
             const particlesContainer = document.getElementById('particles');
+            const audio = document.getElementById('bg-music');
+            let musicStarted = false;
 
             function createParticles() {
                 const particleCount = 40;
@@ -1218,6 +1238,27 @@
                 });
             }
 
+            // Функция для запуска музыки
+            function startMusic() {
+                if (!musicStarted) {
+                    audio.volume = 0.3;
+                    audio.play().then(() => {
+                        musicStarted = true;
+                        console.log('Музыка запущена');
+                    }).catch((err) => {
+                        console.log('Автозапуск музыки заблокирован браузером. Попытка по клику...');
+                        // Повторная попытка по клику на любой элемент
+                        document.addEventListener('click', function playOnClick() {
+                            audio.play().then(() => {
+                                musicStarted = true;
+                                console.log('Музыка запущена по клику');
+                            }).catch(e => console.log('Ошибка воспроизведения:', e));
+                            document.removeEventListener('click', playOnClick);
+                        });
+                    });
+                }
+            }
+
             openBtn.addEventListener('click', () => {
                 const img = openBtn.querySelector('img');
                 if (img) {
@@ -1227,6 +1268,12 @@
 
                 setTimeout(() => { envelopeOverlay.classList.add('fading'); }, 300);
                 setTimeout(() => { blackScreen.classList.add('active'); }, 600);
+                
+                // Запускаем музыку во время затемнения
+                setTimeout(() => {
+                    startMusic();
+                }, 800);
+
                 setTimeout(() => {
                     blackScreen.classList.add('fade-out');
                     mainContent.classList.add('visible');
