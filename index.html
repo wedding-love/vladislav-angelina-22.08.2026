@@ -130,16 +130,16 @@
             height: 100vh;
             min-height: 100vh;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: flex-start;
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.6)), 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
                         url('главная.jpeg') center/cover no-repeat;
             opacity: 0;
             transform: scale(1.05);
             transition: opacity 2s ease-out 2s, transform 2.5s ease-out 2s;
             overflow: hidden;
-            padding: 0 clamp(15px, 4vw, 50px) clamp(20px, 5vh, 70px) clamp(15px, 4vw, 50px);
+            padding: 0 clamp(15px, 4vw, 50px);
         }
 
         .hero.visible {
@@ -151,6 +151,8 @@
             text-align: left;
             width: 100%;
             max-width: 600px;
+            padding-bottom: clamp(10px, 2vh, 30px);
+            margin-bottom: clamp(10px, 3vh, 40px);
         }
 
         .hero-names {
@@ -942,7 +944,7 @@
 
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(15px, 4vh, 50px) clamp(12px, 3vw, 25px); }
+            .hero { padding: 0 clamp(12px, 3vw, 25px); }
             .hero-names { font-size: clamp(28px, 6vw, 42px); letter-spacing: 3px; }
             .hero-date { font-size: clamp(15px, 2vw, 20px); letter-spacing: 5px; }
             .details { padding: 60px 25px; }
@@ -969,7 +971,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero { padding: 0 clamp(10px, 2vw, 16px) clamp(15px, 4vh, 40px) clamp(10px, 2vw, 16px); }
+            .hero { padding: 0 clamp(10px, 2vw, 16px); align-items: flex-end; padding-bottom: clamp(30px, 10vh, 80px); }
             .hero-names { font-size: clamp(24px, 7vw, 32px); letter-spacing: 2px; }
             .hero-date { font-size: clamp(14px, 3vw, 18px); letter-spacing: 4px; }
             .details { padding: 50px 18px; }
@@ -1025,7 +1027,7 @@
     <!-- ========== ОСНОВНОЙ КОНТЕНТ ========== -->
     <main id="main-content">
 
-        <!-- БЛОК 1: ГЕРОЙ (информация внизу экрана) -->
+        <!-- БЛОК 1: ГЕРОЙ (информация видна сразу в конце экрана) -->
         <section class="hero">
             <div class="hero-info">
                 <h1 class="hero-names">Vladislav & Angelina</h1>
