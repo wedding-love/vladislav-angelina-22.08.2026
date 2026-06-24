@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Приглашение: Владислав и Ангелина</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -827,9 +827,9 @@
 
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 768px) {
-            .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(15px, 4vh, 40px) clamp(12px, 3vw, 25px); }
-            .hero-names { font-size: clamp(24px, 5.5vw, 42px); letter-spacing: 3px; }
-            .hero-date { font-size: clamp(15px, 2.2vw, 20px); letter-spacing: 5px; }
+            .hero { padding: 0 clamp(12px, 3vw, 25px) clamp(12px, 3vh, 30px) clamp(12px, 3vw, 25px); }
+            .hero-names { font-size: clamp(20px, 4.5vw, 34px); letter-spacing: 2px; }
+            .hero-date { font-size: clamp(13px, 2vw, 17px); letter-spacing: 4px; }
             .details { padding: 60px 25px; }
             .timeline-section { padding: 50px 25px; }
             .timeline-container::before { left: 30px; }
@@ -852,55 +852,93 @@
 
         @media (max-width: 480px) {
             .hero { 
-                padding: 0 clamp(12px, 3vw, 20px) clamp(15px, 4vh, 35px) clamp(12px, 3vw, 20px); 
+                padding: 0 clamp(10px, 2vw, 16px) clamp(10px, 2.5vh, 20px) clamp(10px, 2vw, 16px); 
                 align-items: flex-end; 
             }
             .hero-names { 
-                font-size: clamp(20px, 5.5vw, 30px); 
-                letter-spacing: 2px; 
-                margin-bottom: 2px;
+                font-size: clamp(16px, 4.5vw, 22px); 
+                letter-spacing: 1.5px; 
+                margin-bottom: 1px;
+                line-height: 1.0;
             }
             .hero-date { 
-                font-size: clamp(13px, 2.8vw, 18px); 
-                letter-spacing: 4px; 
+                font-size: clamp(11px, 2.5vw, 14px); 
+                letter-spacing: 3px; 
             }
-            .details { padding: 50px 18px; }
-            .invitation-greeting-text { font-size: 1.6rem; }
-            .invitation-text { font-size: 13px; line-height: 1.9; }
-            .timeline-section { padding: 40px 15px; }
-            .timeline-container::before { left: 24px; }
-            .timeline-item { gap: 15px; }
-            .timeline-icon-wrapper { width: 36px; height: 36px; }
-            .timeline-icon { width: 18px; height: 18px; }
-            .timeline-time { font-size: 16px; }
-            .timeline-desc { font-size: 11px; }
-            .timeline-note { font-size: 10px; }
-            .location-section { padding: 50px 20px; }
-            .dresscode-section { padding: 50px 0; }
-            .wishes-section { padding: 50px 20px; }
-            .countdown-section { padding: 50px 20px; }
-            .contacts-section { padding: 50px 20px 30px; }
-            .countdown-timer { gap: 4px; }
-            .countdown-number { font-size: 1.6rem; }
-            .countdown-label { font-size: 0.55rem; }
-            .countdown-separator { font-size: 1.2rem; margin: 0 1px; }
-            .contacts-grid { gap: 20px; }
-            .confirmation-note { font-size: 12px; }
+            .hero-info {
+                padding-bottom: 0;
+                max-width: 100%;
+            }
+            .details { padding: 40px 16px; }
+            .invitation-greeting-text { font-size: 1.4rem; }
+            .invitation-text { font-size: 12px; line-height: 1.8; }
+            .timeline-section { padding: 35px 14px; }
+            .timeline-container::before { left: 20px; }
+            .timeline-item { gap: 12px; }
+            .timeline-icon-wrapper { width: 32px; height: 32px; }
+            .timeline-icon { width: 16px; height: 16px; }
+            .timeline-time { font-size: 14px; }
+            .timeline-desc { font-size: 10px; }
+            .timeline-note { font-size: 9px; }
+            .location-section { padding: 40px 16px; }
+            .location-name { font-size: 16px; }
+            .location-address { font-size: 12px; }
+            .map-button { padding: 10px 24px; font-size: 10px; }
+            .dresscode-section { padding: 40px 0; }
+            .dresscode-title { font-size: 16px; }
+            .dresscode-text { font-size: 12px; padding: 0 14px; }
+            .wishes-section { padding: 40px 16px; }
+            .wishes-title { font-size: 16px; }
+            .wishes-text { font-size: 12px; }
+            .countdown-section { padding: 40px 16px; }
+            .countdown-title { font-size: 16px; }
+            .countdown-subtitle { font-size: 12px; margin-bottom: 25px; }
+            .countdown-timer { gap: 3px; }
+            .countdown-number { font-size: 1.4rem; }
+            .countdown-label { font-size: 0.5rem; }
+            .countdown-separator { font-size: 1rem; margin: 0 1px; }
+            .contacts-section { padding: 40px 16px 30px; }
+            .contacts-title { font-size: 16px; }
+            .contacts-grid { gap: 16px 30px; }
+            .contact-name { font-size: 12px; }
+            .contact-phone { font-size: 14px; }
+            .confirmation-note { font-size: 11px; }
+            .contacts-message { font-size: 1.2rem; }
             .thumb-grid {
                 grid-template-columns: repeat(6, 1fr);
-                gap: 8px;
+                gap: 6px;
             }
-            .location-name { font-size: 17px; }
-            .location-address { font-size: 13px; }
-            .map-button { padding: 12px 30px; font-size: 11px; }
+            .invitation-block-wrapper { margin-bottom: 30px; }
+            .invitation-divider { margin: 20px auto; }
+            .calendar-grid { gap: 6px; max-width: 260px; }
+            .day { padding: 4px 0; font-size: 10px; }
+            .day.wedding-day::after { width: 22px; height: 22px; }
+            .day-header { font-size: 8px; padding-bottom: 6px; }
+            .month-name { font-size: 11px; margin-bottom: 20px; }
+            .timeline-title { font-size: 16px; margin-bottom: 30px; }
+            .location-title { font-size: 16px; margin-bottom: 20px; }
+        }
+
+        @media (max-width: 390px) {
+            .hero-names { 
+                font-size: clamp(14px, 4vw, 18px); 
+                letter-spacing: 1px; 
+            }
+            .hero-date { 
+                font-size: clamp(10px, 2vw, 12px); 
+                letter-spacing: 2px; 
+            }
+            .hero { 
+                padding: 0 10px clamp(8px, 2vh, 14px) 10px; 
+            }
         }
 
         /* Специально для iPhone с вырезом */
         @supports (padding: max(0px)) {
             .hero {
-                padding-left: max(clamp(15px, 4vw, 50px), env(safe-area-inset-left));
-                padding-right: max(clamp(15px, 4vw, 50px), env(safe-area-inset-right));
-                padding-bottom: max(clamp(20px, 5vh, 60px), env(safe-area-inset-bottom));
+                padding-left: max(clamp(10px, 2vw, 16px), env(safe-area-inset-left));
+                padding-right: max(clamp(10px, 2vw, 16px), env(safe-area-inset-right));
+                padding-bottom: max(clamp(10px, 2.5vh, 20px), env(safe-area-inset-bottom));
             }
         }
     </style>
