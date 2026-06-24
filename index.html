@@ -985,7 +985,7 @@
 
     <!-- ========== АУДИО ========== -->
     <audio id="bg-music" loop preload="auto">
-        <source src="Lana%20Del%20Rey%20-%20Young%20And%20Beautiful%20(OST%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B8%D0%B8%CC%86%20%D0%93%D0%B5%D1%82%D1%81%D0%B1%D0%B8).mp3" type="audio/mpeg">
+        <source src="young.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
 
@@ -1210,16 +1210,6 @@
             const audio = document.getElementById('bg-music');
             let musicStarted = false;
 
-            // Проверяем, загрузился ли аудиофайл
-            audio.addEventListener('error', function(e) {
-                console.log('Ошибка загрузки аудио:', e);
-                console.log('Проверьте, что файл лежит в той же папке и называется точно так же:');
-                console.log('Lana Del Rey - Young And Beautiful (OST Великий Гетсби).mp3');
-                // Пробуем альтернативный путь без URL-кодирования
-                audio.src = 'Lana Del Rey - Young And Beautiful (OST Великий Гетсби).mp3';
-                audio.load();
-            });
-
             function createParticles() {
                 const particleCount = 40;
                 for (let i = 0; i < particleCount; i++) {
@@ -1254,15 +1244,15 @@
                     audio.volume = 0.3;
                     audio.play().then(() => {
                         musicStarted = true;
-                        console.log('Музыка запущена');
+                        console.log('🎵 Музыка запущена');
                     }).catch((err) => {
-                        console.log('Автозапуск музыки заблокирован браузером:', err);
+                        console.log('⚠️ Автозапуск музыки заблокирован браузером:', err);
                         // Повторная попытка по клику на любой элемент
                         document.addEventListener('click', function playOnClick() {
                             audio.play().then(() => {
                                 musicStarted = true;
-                                console.log('Музыка запущена по клику');
-                            }).catch(e => console.log('Ошибка воспроизведения:', e));
+                                console.log('🎵 Музыка запущена по клику');
+                            }).catch(e => console.log('❌ Ошибка воспроизведения:', e));
                             document.removeEventListener('click', playOnClick);
                         });
                     });
@@ -1279,7 +1269,7 @@
                 setTimeout(() => { envelopeOverlay.classList.add('fading'); }, 300);
                 setTimeout(() => { blackScreen.classList.add('active'); }, 600);
                 
-                // Запускаем музыку во время затемнения
+                // Запускаем музыку во время затемнения (через 0.8 секунды)
                 setTimeout(() => {
                     startMusic();
                 }, 800);
